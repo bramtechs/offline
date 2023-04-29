@@ -29,7 +29,7 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}"
+        automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.os }}"
         prerelease: false
         title: "Build"
         files: "app-${{ matrix.os }}.zip"
@@ -48,12 +48,12 @@ jobs:
     - name: Build Electron App
       run: npm run release
     - name: Create zip
-      run: Compress-Archive -Path ./out/* -Destination "app-${{ matrix.os }}.zip"
+      run: Compress-Archive -Path ./out/* -Destination offline.zip
     - name: "Upload build"
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}"
+        automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}-windows"
         prerelease: false
         title: "Build"
-        files: "app-${{ matrix.os }}.zip"
+        files: offline.zip
