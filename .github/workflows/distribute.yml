@@ -24,7 +24,7 @@ jobs:
     - name: Build Electron App
       run: npm run release
     - name: Create zip
-      run: zip -r "app-${{ matrix.os }}.zip" ./out
+      run: zip -r "app-${{ matrix.os }}.zip" ./out/*
     - name: "Upload build"
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
