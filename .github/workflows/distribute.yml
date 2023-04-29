@@ -31,7 +31,7 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.os }}"
         prerelease: false
-        title: "Build"
+        title: "Offline ${{ matrix.os }}"
         files: "app-${{ matrix.os }}.zip"
   release-win:
     permissions:
@@ -55,5 +55,5 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}-windows"
         prerelease: false
-        title: "Build"
+        title: "Offline Windows"
         files: offline.zip
