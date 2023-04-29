@@ -1,0 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Electron built files
+node_modules/
+dist/
+build/
+.vscode/
+node_modules/
+package-lock.json
+
+# Native Node modules
+node_modules/binding/
+node_modules/opencv-build/
+node_modules/sharp/
+
+# MacOS build files
+.DS_Store
+*.dmg
+*.app.zip
+*.ipa
+*.dSYM.zip
+
+# Windows build files
+*.exe
+*.msi
+*.pdb
+*.ilk
+*.appx
+*.msix
+*.msixbundle
+*.tar.gz
+*.zip
+
+# Linux build files
+*.AppImage
+*.snap
+*.deb
+*.rpm
+*.tar.gz
+*.tar.xz
+
+# Other files
+.env

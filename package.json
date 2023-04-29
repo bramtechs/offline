@@ -1,0 +1,20 @@
+{
+    "name": "offline",
+    "version": "1.0.0",
+    "description": "App that keeps track of time spent offline.",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "tsc && electron www"
+    },
+    "author": "bramtechs",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^24.1.3",
+        "typescript": "^5.0.4"
+    },
+    "prettier": {
+        "printWidth": 75,
+        "tabWidth": 4
+    }
+}

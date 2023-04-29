@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://www.google.com/">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+        <title>Offline</title>
+        <link href="styles.css" rel="stylesheet"/>
+        <script src="offline.js"></script>
+    </head>
+    <body>
+        <div id="offline"">
+            <h1>You have been offline for</h1>
+            <h2><span>0 seconds</span>... 🌱😌</h2>
+        </div>
+        <div id="online"">
+            <h1>You are online.</h1>
+            <h2>Be careful, you might get distracted.</h2>
+        </div>
+        <button class="hidden", id="flipButton">Flip (testing)</button>
+    </body>
+</html>
