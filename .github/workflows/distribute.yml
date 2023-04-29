@@ -22,7 +22,7 @@ jobs:
     - name: Build Electron App
       run: npm run release
     - name: Create zip
-      run: zip -r my-app-${{ github.ref }}-${{ matrix.os }}.zip ./out
+      run: zip -r "app-${{ matrix.os }}.zip" ./out
     - name: "Upload build"
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
@@ -30,4 +30,4 @@ jobs:
         automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}"
         prerelease: false
         title: "Build"
-        files: "my-app-${{ github.ref }}-${{ matrix.os }}.zip"
+        files: "app-${{ matrix.os }}.zip"
