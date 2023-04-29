@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "tsc && electron-forge start",
-    "package": "tsc && electron-forge package"
+    "package": "tsc && electron-forge package && mv www/out out"
   },
   "author": "bramtechs",
   "license": "MIT",

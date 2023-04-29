@@ -21,30 +21,13 @@ jobs:
       run: npm install
     - name: Build Electron App
       run: npm run package
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create zip
+      run: zip -r my-app-${{ github.ref }}-${{ matrix.os }}.zip ./out
+    - name: "Upload build"
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}"
         prerelease: false
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: offline 
-        path: ./out
-    - name: Create Artifact Zip
-      run: zip -r my-app-${{ github.ref }}-${{ matrix.os }}.zip ./dist
-    - name: Publish Release
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./my-app-${{ github.ref }}-${{ matrix.os }}.zip
-        asset_name: my-app-${{ github.ref }}-${{ matrix.os }}.zip
-        asset_content_type: application/zip
-
+        title: "Build"
+        files: "my-app-${{ github.ref }}-${{ matrix.os }}.zip"
