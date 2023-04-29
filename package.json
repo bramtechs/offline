@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "tsc && electron-forge start",
     "package": "tsc && electron-forge package && mv www/out out",
-    "release": "tsc && electron-forge package"
+    "release": "tsc && electron-forge package && ls && ls ./www"
   },
   "author": "bramtechs",
   "license": "MIT",
