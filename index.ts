@@ -4,7 +4,7 @@ const createWindow = () => {
     const win = new BrowserWindow({
         width: 600,
         height: 300,
-        resizable: false,
+        resizable: true,
         title: "Offline",
         autoHideMenuBar: true,
     });
