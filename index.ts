@@ -9,7 +9,7 @@ const createWindow = () => {
         autoHideMenuBar: true,
     });
 
-    win.loadFile("index.html");
+    win.loadFile("www/index.html");
 };
 
 app.whenReady().then(() => {
