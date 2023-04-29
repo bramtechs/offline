@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
     - name: Setup Node.js
@@ -25,6 +25,30 @@ jobs:
       run: npm run release
     - name: Create zip
       run: zip -r "app-${{ matrix.os }}.zip" ./out/*
+    - name: "Upload build"
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "dev-${{ github.run_id }}-${{ github.run_attempt }}"
+        prerelease: false
+        title: "Build"
+        files: "app-${{ matrix.os }}.zip"
+  release-win:
+    permissions:
+      contents: write
+    runs-on: windows-latest 
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+    - name: Install Dependencies
+      run: npm install
+    - name: Build Electron App
+      run: npm run release
+    - name: Create zip
+      run: Compress-Archive -Path ./out/* -Destination "app-${{ matrix.os }}.zip"
     - name: "Upload build"
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
